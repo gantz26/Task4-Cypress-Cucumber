@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        config-file: [ defaultCypress.config.js, differentCypress.config.js ]
+        config-file: [ cypress/configs/defaultCypress.config.js, cypress/configs/differentCypress.config.js ]
         browser: [ chrome, edge ]
 
     steps:
