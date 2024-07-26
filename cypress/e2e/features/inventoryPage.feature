@@ -39,5 +39,5 @@ Feature: Inventory Page
     Examples:
       | social_network |
       | LinkedIn       |
-      | Facebook       |
       | X              |
+      | Facebook       |
