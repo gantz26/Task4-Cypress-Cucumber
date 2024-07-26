@@ -139,19 +139,19 @@ When(/^The user clicks the (.*) link$/, (socialLink) => {
             }
           })
         })
-        cy.visit(link);
+        cy.visit(link, { timeout: 10000 });
       })
       break;
     }
     case "Facebook": {
       inventoryPage.getFacebookLink.then(link => {
-        cy.visit(link);
+        cy.visit(link, { timeout: 10000 });
       })
       break;
     }
     case "LinkedIn": {
       inventoryPage.getLinkedInLink.then(link => {
-        cy.visit(link, { failOnStatusCode: false });
+        cy.visit(link, { failOnStatusCode: false, timeout: 10000 });
       })
       break;
     }
