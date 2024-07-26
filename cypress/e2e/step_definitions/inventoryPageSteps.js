@@ -165,7 +165,10 @@ Then(/^The site profile in (.*) social network is opened$/, (socialLink) => {
       break;
     }
     case "Facebook": {
-      cy.url({ timeout: 10000 }).should("eq", "https://www.facebook.com/saucelabs");
+      cy.url({ timeout: 10000 }).should("be.oneOf",
+        [ "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fsaucelabs",
+          "https://www.facebook.com/saucelabs"
+         ]);
       break;
     }
     case "LinkedIn": {
