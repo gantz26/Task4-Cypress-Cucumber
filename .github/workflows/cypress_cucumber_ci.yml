@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         config-file: [ cypress/configs/defaultCypress.config.js, cypress/configs/differentCypress.config.js ]
-        browser: [ chrome, edge ]
+        browser: [ chrome, firefox ]
 
     steps:
       - name: Checkout the repository
