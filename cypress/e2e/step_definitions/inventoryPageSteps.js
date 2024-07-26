@@ -139,19 +139,19 @@ When(/^The user clicks the (.*) link$/, (socialLink) => {
             }
           })
         })
-        cy.visit(link, { timeout: 10000 });
+        cy.visit(link);
       })
       break;
     }
     case "Facebook": {
       inventoryPage.getFacebookLink.then(link => {
-        cy.visit(link, { timeout: 10000 });
+        cy.visit(link);
       })
       break;
     }
     case "LinkedIn": {
       inventoryPage.getLinkedInLink.then(link => {
-        cy.visit(link, { failOnStatusCode: false, timeout: 10000 });
+        cy.visit(link, { failOnStatusCode: false });
       })
       break;
     }
@@ -161,15 +161,15 @@ When(/^The user clicks the (.*) link$/, (socialLink) => {
 Then(/^The site profile in (.*) social network is opened$/, (socialLink) => {
   switch (socialLink) {
     case "X": {
-      cy.url().should("eq", "https://x.com/saucelabs");
+      cy.url({ timeout: 10000 }).should("eq", "https://x.com/saucelabs");
       break;
     }
     case "Facebook": {
-      cy.url().should("eq", "https://www.facebook.com/saucelabs");
+      cy.url({ timeout: 10000 }).should("eq", "https://www.facebook.com/saucelabs");
       break;
     }
     case "LinkedIn": {
-      cy.url().should("eq", "https://www.linkedin.com/company/sauce-labs/");
+      cy.url({ timeout: 10000 }).should("eq", "https://www.linkedin.com/company/sauce-labs/");
       break;
     }
   }
