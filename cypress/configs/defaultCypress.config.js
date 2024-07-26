@@ -18,6 +18,7 @@ module.exports = defineConfig({
     },
     viewportWidth: 1920,
     viewportHeight: 1080,
+    supportFile: false,
     baseUrl: "https://www.saucedemo.com",
   },
 });
