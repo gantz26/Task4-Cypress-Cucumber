@@ -1,0 +1,42 @@
+name: Cypress + Cucumber tests
+
+on:
+  push:
+    branches: main
+
+jobs:
+  cucumber-run:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        config-file: [ defaultCypress.config.js, differentCypress.config.js ]
+        browser: [ chrome, edge ]
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Cypress run
+        id: cypress
+        uses: cypress-io/github-action@v6
+        with:
+          config-file: ${{ matrix.config-file }}
+          browser: ${{ matrix.browser }}
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ github.CYPRESS_RECORD_KEY }}
+
+      - name: Print Cypress Cloud URL
+        if: always()
+        run: |
+          echo Cypress finished with: ${{ steps.cypress.outcome }}
+          echo See results at ${{ steps.cypress.outputs.resultsUrl }}
+
+      - name: Update About section
+        if: always()
+        run: |
+          curl -X PATCH \
+          -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          -d '{"homepage": "${{ steps.cypress.outputs.resultsUrl }}", "description": "Cypress + Cucumber results"}' \
+          https://api.github.com/repos/${{ github.repository }}
