@@ -3,9 +3,11 @@
     "cy:open:default": "cypress open --config-file cypress/configs/defaultCypress.config.js",
     "cy:open:different": "cypress open --config-file cypress/configs/differentCypress.config.js",
     "cy:run:default:chrome": "cypress run --config-file cypress/configs/defaultCypress.config.js --browser chrome",
-    "cy:run:default:edge": "cypress run --config-file cypress/configs/defaultCypress.config.js --browser edge",
+    "cy:run:default:electron": "cypress run --config-file cypress/configs/defaultCypress.config.js --browser electron",
     "cy:run:different:chrome": "cypress run --config-file cypress/configs/differentCypress.config.js --browser chrome",
-    "cy:run:different:edge": "cypress run --config-file cypress/configs/differentCypress.config.js --browser edge"
+    "cy:run:different:electron": "cypress run --config-file cypress/configs/differentCypress.config.js --browser electron",
+    "cy:run:record:default:chrome": "cypress run --record --key $KEY --config-file cypress/configs/defaultCypress.config.js --browser chrome",
+    "cy:run:record:different:electron": "cypress run --record --key $KEY --config-file cypress/configs/differentCypress.config.js --browser electron"
   },
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^20.1.0",

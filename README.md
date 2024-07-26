@@ -28,14 +28,15 @@ npm run cy:open:different
 
 // To run tests in terminal
 npm run cy:run:default:chrome
-npm run cy:run:different:edge
+npm run cy:run:different:electron
 ```
 
 4. To record results to the Cloud ID account
     - Open Cypress app and connect the project
     - Copy the record key in the project settings
+    - Replace the $KEY with your key in package.json
     - Run the tests with the one of the next commands
-```
-npx cypress open --record --key <record key>
-npx cypress run --record --key <record key>
-```
+        ```
+        npm run cy:run:record:default:chrome
+        ```
+    - Click the link to view the report
